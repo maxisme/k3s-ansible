@@ -5,3 +5,5 @@
   become: yes
   roles:
     - role: reset
+  vars_files:
+    - "vars.yml"
