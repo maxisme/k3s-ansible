@@ -1,4 +1,14 @@
 ---
+- name: Reenable SWAP in fstab
+  replace:
+    path: /etc/fstab
+    regexp: '^# (.+?\sswap\s+sw\s+.*)$'
+    replace: '\1'
+
+- name: Enable SWAP (2/2)
+  shell: |
+    swapon -a
+
 - name: Disable services
   systemd:
     name: "{{ item }}"
