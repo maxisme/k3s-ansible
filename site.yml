@@ -10,14 +10,14 @@
   vars_files:
     - "vars.yml"
 
-- hosts: k3master
+- hosts: master
   become: yes
   roles:
     - role: k3s/master
   vars_files:
     - "vars.yml"
 
-- hosts: k3node
+- hosts: node
   become: yes
   roles:
     - role: k3s/node
