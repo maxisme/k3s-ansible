@@ -1,8 +1,0 @@
----
-# https://github.com/k3s-io/k3s/releases
-k3s_version: v1.20.0+k3s2
-ansible_user: root
-systemd_dir: /etc/systemd/system
-extra_server_args: ""
-extra_agent_args: ""
-master_ip: "10.1.0.4"
