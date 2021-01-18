@@ -7,7 +7,7 @@ After=network-online.target
 Type=notify
 ExecStartPre=-/sbin/modprobe br_netfilter
 ExecStartPre=-/sbin/modprobe overlay
-ExecStart=/usr/local/bin/k3s agent --server https://{{ master_ip }}:6443 --token {{ hostvars[groups['master'][0]]['token'] }} {{ if (ansible_host and '192.168' not in ansible_host) and ansible_connection != "local" }}--node-ip {{ wg_net }}{{ wg_num }} --node-external-ip {{ ansible_host }}{{ end }} {{ extra_agent_args | default("") }}
+ExecStart=/usr/local/bin/k3s agent --server https://{{ master_ip }}:6443 --token {{ hostvars[groups['master'][0]]['token'] }} --node-ip {{ wg_net }}{{ wg_num }} {% if (ansible_host and '192.168' not in ansible_host) and ansible_connection != "local" %} --node-external-ip {{ ansible_host }}{% endif %} {{ extra_agent_args | default("") }}
 KillMode=process
 Delegate=yes
 # Having non-zero Limit*s causes performance problems due to accounting overhead
