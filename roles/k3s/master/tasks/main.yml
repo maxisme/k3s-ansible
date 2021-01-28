@@ -47,12 +47,10 @@
   slurp:
     src: /var/lib/rancher/k3s/server/node-token
   register: node_token
-  when: mkdir.changed
 
 - name: Store Master node-token
   set_fact:
     token: "{{ node_token.content | b64decode | regex_replace('\n', '') }}"
-  when: mkdir.changed
 
 - name: Restore node-token file access
   file:
